@@ -1,0 +1,19 @@
+------------------------------------------------------------
+5. Longest_palindromic_substring
+------------------------------------------------------------
+
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        s = s
+        nums = len(s)
+        while True:
+            i = 0
+            while i + nums <= len(s):
+                sl = s[i:i + nums]
+                sr = sl[::-1]
+                if sl == sr:
+                    return sl
+                i = i + 1
+            nums = nums - 1
+            if nums == 0:
+                return "There is no palindromic substring."
