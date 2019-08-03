@@ -1,0 +1,15 @@
+------------------------------
+4. Median_of_two_sorted_arrays
+------------------------------
+
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        self.nums = nums1 + nums2
+        self.nums.sort()
+        size = len(self.nums)
+        if size % 2 == 1:
+            return self.nums[size//2]
+        
+        if size % 2 == 0:
+            return (self.nums[size//2]+self.nums[size//2 - 1])/2
+        
