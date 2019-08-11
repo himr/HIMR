@@ -23,15 +23,29 @@ Output:
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/subsets
 -----------------------------
-
+#递归
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        sub = [[]]
+        res = [[]]
         for num in nums:
-            for temp in sub[:]:
+            for temp in res[:]:
                 x = temp[:]
                 x.append(num)
-                sub.append(x)
-        return sub
+                res.append(x)
+        return res
+        
+# 位运算
+class Solution:
+    def subsets(self, nums):
+        t=len(nums)
+        res=[]
+        for i in range(2**t):
+            tmp=[]
+            for j in range(t):
+                if i&(1<<j):
+                    tmp.append(nums[t-1-j])
+            res.append(tmp)
+        return res
+
 
 
