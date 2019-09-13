@@ -15,6 +15,7 @@
 # 来源：力扣（LeetCode）
 # 链接：https://leetcode-cn.com/problems/product-of-array-except-self
 # 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+# 矩阵
 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -26,4 +27,14 @@ class Solution:
             q *= nums[i]
             res[i - 1] *= q
         return res
-# 矩阵
+# 前后积
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        prefix = [1]
+        for num in nums[:-1]:
+            prefix.append(prefix[-1] * num)
+        suffix = [1]
+        for num in nums[::-1][:-1]:
+            suffix.append(suffix[-1] * num)
+        return list([a * b for a, b in zip(prefix, suffix[::-1])])
+
