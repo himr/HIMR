@@ -1,0 +1,31 @@
+# 
+# 142. Linked List Cycle II
+# 
+# 力扣（LeetCode）：https://leetcode-cn.com/problems/linked-list-cycle-ii
+# 
+# 快慢指针，先找到环的位置
+# fast = head 
+# fast距环入口等于相遇点在环内到达环入口的距离
+
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next : return
+        fast, slow = head, head
+        start = head
+
+        while fast and fast.next:
+
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                while slow != start:
+                    slow = slow.next
+                    start = start.next
+                return slow
+
+        return None
