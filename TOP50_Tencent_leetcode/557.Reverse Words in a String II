@@ -1,0 +1,12 @@
+# -----------------------------------
+# 557.Reverse Words in a String II
+
+# 来源：https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/
+# -----------------------------------
+
+#  空格作为标志进行分组，翻转后再组合
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        return " ".join([i[::-1] for i in s.split()])
+
+# -----------------------------------
