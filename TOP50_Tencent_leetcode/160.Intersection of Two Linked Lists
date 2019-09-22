@@ -1,0 +1,39 @@
+# ---------------------------------------------
+# 160.Intersection of Two Linked Lists
+# ---------------------------------------------
+# 来源：https://leetcode-cn.com/problems/intersection-of-two-linked-lists/
+# ---------------------------------------------
+
+# 遍历
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        """
+        :type head1, head1: ListNode
+        :rtype: ListNode
+        """
+        hashA  = {}
+        while headA:
+            hashA[headA] = 1
+            headA = headA.next
+        while headB:
+            if hashA.get(headB) is not None:
+                return headB
+            headB = headB.next
+
+
+# ---------------------------------------------
+
+# 双指针
+class Solution(object):
+    def getIntersectionNode(self, headA, headB):
+        p, q = headA, headB
+        while p!= q:  # 到达相交点
+            p = p.next if p else headB   # A+B
+            q = q.next if q else headA
+        return p
